@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smoothie Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+
+<body>
+    <div class="container">
+        <h1>Smoothie Generator</h1>
+        <form id="smoothieForm">
+            <h2 id="flavor-h2">Flavor Preferences</h2>
+            <div class="checkbox-group">
+                <label>
+                    <input type="checkbox" name="flavor" value="fruity"> Fruity
+                </label>
+                <label>
+                    <input type="checkbox" name="flavor" value="creamy"> Creamy
+                </label>
+                <label>
+                    <input type="checkbox" name="flavor" value="tropical"> Tropical
+                </label>
+                <label>
+                    <input type="checkbox" name="flavor" value="chocolaty"> Chocolaty
+                </label>
+            </div>
+
+            <h2>Dietary Restrictions</h2>
+            <div class="checkbox-group">
+                <label>
+                    <input type="checkbox" name="diet" value="vegan"> Vegan
+                </label>
+                <label>
+                    <input type="checkbox" name="diet" value="gluten-free"> Gluten-Free
+                </label>
+                <label>
+                    <input type="checkbox" name="diet" value="dairy-free"> Dairy-Free
+                </label>
+                <label>
+                    <input type="checkbox" name="diet" value="nut-free"> Nut-Free
+                </label>
+            </div>
+
+            <h2>Goals</h2>
+            <div class="checkbox-group">
+                <label>
+                    <input type="checkbox" name="goal" value="energy-boost"> Energy Boost
+                </label>
+                <label>
+                    <input type="checkbox" name="goal" value="muscle-gain"> Muscle Gain
+                </label>
+                <label>
+                    <input type="checkbox" name="goal" value="weight-loss"> Weight Loss
+                </label>
+                <label>
+                    <input type="checkbox" name="goal" value="immune-support"> Immune Support
+                </label>
+            </div>
+
+            <button type="submit">Generate Smoothie</button>
+        </form>
+
+        <div id="smoothieResult" class="hidden">
+            <h2 id="smoothieName"></h2>
+            <div id="recipeCard">
+                <img id="smoothieImage" src="" alt="Smoothie Image">
+                <div id="recipeDetails"></div>
+                <div id="nutritionChart"></div> <!-- D3.js graph will go here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
