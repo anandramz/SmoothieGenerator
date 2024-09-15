@@ -1,8 +1,8 @@
 document.getElementById('smoothieForm').addEventListener('submit', function(event) {
   event.preventDefault();
 
-  const APP_ID = 'bd594922'; // Replace with your Edamam App ID
-  const APP_KEY = 'a3d3d42482e2ce2d78fa654b20116f74'; // Replace with your Edamam App Key
+  const APP_ID = 'bd594922'; 
+  const APP_KEY = 'a3d3d42482e2ce2d78fa654b20116f74';
 
   const selectedFlavors = Array.from(document.querySelectorAll('input[name="flavor"]:checked')).map(el => el.value);
   const selectedDiet = Array.from(document.querySelectorAll('input[name="diet"]:checked')).map(el => el.value);
@@ -31,10 +31,8 @@ document.getElementById('smoothieForm').addEventListener('submit', function(even
           if (data.hits.length > 0) {
               const smoothie = data.hits[0].recipe;
 
-              // Generate a fun smoothie name
               const smoothieName = generateSmoothieName(selectedFlavors, selectedGoals);
 
-              // Display the smoothie recipe
               document.getElementById('smoothieName').textContent = smoothieName;
               document.getElementById('smoothieImage').src = smoothie.image;
               document.getElementById('smoothieImage').alt = smoothie.label;
@@ -47,7 +45,6 @@ document.getElementById('smoothieForm').addEventListener('submit', function(even
               `;
               document.getElementById('recipeDetails').innerHTML = recipeDetails;
 
-              // Prepare nutritional data for the D3.js chart
               const nutritionData = [
                   {label: 'Calories', value: Math.round(smoothie.calories)},
                   {label: 'Protein', value: Math.round(smoothie.totalNutrients.PROCNT.quantity)},
@@ -55,7 +52,6 @@ document.getElementById('smoothieForm').addEventListener('submit', function(even
                   {label: 'Carbohydrates', value: Math.round(smoothie.totalNutrients.CHOCDF.quantity)}
               ];
 
-              // Render the D3.js chart
               renderNutritionChart(nutritionData);
 
               document.getElementById('smoothieResult').classList.remove('hidden');
@@ -69,20 +65,17 @@ document.getElementById('smoothieForm').addEventListener('submit', function(even
       });
 });
 
-// Function to generate a unique smoothie name
 function generateSmoothieName(flavors, goals) {
   const flavorPart = flavors.length > 0 ? flavors.join(' & ') : 'Mystery';
   const goalPart = goals.length > 0 ? goals.join(' ') : 'Smoothie';
   return `${flavorPart} ${goalPart}`;
 }
 
-// Function to render the D3.js nutrition chart
 function renderNutritionChart(data) {
   const width = 400;
   const height = 300;
   const margin = {top: 20, right: 20, bottom: 30, left: 40};
 
-  // Clear any existing chart
   d3.select("#nutritionChart").selectAll("*").remove();
 
   const svg = d3.select("#nutritionChart")
